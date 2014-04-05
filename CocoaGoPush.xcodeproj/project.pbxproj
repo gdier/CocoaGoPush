@@ -10,11 +10,6 @@
 		55AA05E018F02899000F9B32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AA05DF18F02899000F9B32 /* Foundation.framework */; };
 		55AA05E218F02899000F9B32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AA05E118F02899000F9B32 /* CoreGraphics.framework */; };
 		55AA05E418F02899000F9B32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AA05E318F02899000F9B32 /* UIKit.framework */; };
-		55AA05F918F02899000F9B32 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AA05F818F02899000F9B32 /* XCTest.framework */; };
-		55AA05FA18F02899000F9B32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AA05DF18F02899000F9B32 /* Foundation.framework */; };
-		55AA05FB18F02899000F9B32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AA05E318F02899000F9B32 /* UIKit.framework */; };
-		55AA060318F02899000F9B32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55AA060118F02899000F9B32 /* InfoPlist.strings */; };
-		55AA060518F02899000F9B32 /* CocoaGoPushTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AA060418F02899000F9B32 /* CocoaGoPushTests.m */; };
 		55AA061718F02936000F9B32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AA061018F02936000F9B32 /* AppDelegate.m */; };
 		55AA061918F02936000F9B32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55AA061318F02936000F9B32 /* InfoPlist.strings */; };
 		55AA061A18F02936000F9B32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55AA061518F02936000F9B32 /* Images.xcassets */; };
@@ -35,28 +30,23 @@
 		55AA063718F02C4D000F9B32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55AA061318F02936000F9B32 /* InfoPlist.strings */; };
 		55AA063818F02C4D000F9B32 /* DemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55AA062718F02A91000F9B32 /* DemoViewController.xib */; };
 		55AA063F18F02D3B000F9B32 /* CocoaGoPushDemoMRC-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55AA063E18F02D3B000F9B32 /* CocoaGoPushDemoMRC-Info.plist */; };
+		55AA064618F0315D000F9B32 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AA064518F0315D000F9B32 /* Cocoa.framework */; };
+		55AA065018F0315D000F9B32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55AA064E18F0315D000F9B32 /* InfoPlist.strings */; };
+		55AA065218F0315D000F9B32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AA065118F0315D000F9B32 /* main.m */; };
+		55AA065618F0315D000F9B32 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55AA065418F0315D000F9B32 /* Credits.rtf */; };
+		55AA065918F0315D000F9B32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AA065818F0315D000F9B32 /* AppDelegate.m */; };
+		55AA065C18F0315D000F9B32 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55AA065A18F0315D000F9B32 /* MainMenu.xib */; };
+		55AA065E18F0315D000F9B32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55AA065D18F0315D000F9B32 /* Images.xcassets */; };
+		55AA067618F03180000F9B32 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AA061F18F02A2A000F9B32 /* AsyncSocket.m */; };
+		55AA067718F03184000F9B32 /* CocoaGoPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AA062218F02A2A000F9B32 /* CocoaGoPush.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		55AA05FC18F02899000F9B32 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 55AA05D418F02898000F9B32 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 55AA05DB18F02899000F9B32;
-			remoteInfo = CocoaGoPush;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		55AA05DC18F02899000F9B32 /* CocoaGoPushDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaGoPushDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55AA05DF18F02899000F9B32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		55AA05E118F02899000F9B32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		55AA05E318F02899000F9B32 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		55AA05F718F02899000F9B32 /* CocoaGoPushTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocoaGoPushTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55AA05F818F02899000F9B32 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		55AA060018F02899000F9B32 /* CocoaGoPushTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CocoaGoPushTests-Info.plist"; sourceTree = "<group>"; };
-		55AA060218F02899000F9B32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		55AA060418F02899000F9B32 /* CocoaGoPushTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CocoaGoPushTests.m; sourceTree = "<group>"; };
 		55AA060F18F02936000F9B32 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		55AA061018F02936000F9B32 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		55AA061118F02936000F9B32 /* CocoaGoPush-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CocoaGoPush-Info.plist"; sourceTree = "<group>"; };
@@ -73,6 +63,20 @@
 		55AA062718F02A91000F9B32 /* DemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoViewController.xib; sourceTree = "<group>"; };
 		55AA063C18F02C4D000F9B32 /* CocoaGoPushDemoMRC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaGoPushDemoMRC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55AA063E18F02D3B000F9B32 /* CocoaGoPushDemoMRC-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CocoaGoPushDemoMRC-Info.plist"; sourceTree = "<group>"; };
+		55AA064418F0315D000F9B32 /* CocoaGoPushDemoOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaGoPushDemoOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		55AA064518F0315D000F9B32 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		55AA064818F0315D000F9B32 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		55AA064918F0315D000F9B32 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		55AA064A18F0315D000F9B32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		55AA064D18F0315D000F9B32 /* CocoaGoPushDemoOSX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CocoaGoPushDemoOSX-Info.plist"; sourceTree = "<group>"; };
+		55AA064F18F0315D000F9B32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55AA065118F0315D000F9B32 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		55AA065318F0315D000F9B32 /* CocoaGoPushDemoOSX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CocoaGoPushDemoOSX-Prefix.pch"; sourceTree = "<group>"; };
+		55AA065518F0315D000F9B32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		55AA065718F0315D000F9B32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		55AA065818F0315D000F9B32 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		55AA065B18F0315D000F9B32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		55AA065D18F0315D000F9B32 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,16 +90,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		55AA05F418F02899000F9B32 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				55AA05F918F02899000F9B32 /* XCTest.framework in Frameworks */,
-				55AA05FB18F02899000F9B32 /* UIKit.framework in Frameworks */,
-				55AA05FA18F02899000F9B32 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		55AA063118F02C4D000F9B32 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -103,6 +97,14 @@
 				55AA063218F02C4D000F9B32 /* CoreGraphics.framework in Frameworks */,
 				55AA063318F02C4D000F9B32 /* UIKit.framework in Frameworks */,
 				55AA063418F02C4D000F9B32 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55AA064118F0315D000F9B32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55AA064618F0315D000F9B32 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +117,7 @@
 				55AA061C18F02A2A000F9B32 /* 3rdParty */,
 				55AA062018F02A2A000F9B32 /* CocoaGoPush */,
 				55AA060E18F02936000F9B32 /* CocoaGoPushDemo */,
-				55AA05FE18F02899000F9B32 /* CocoaGoPushTests */,
+				55AA064B18F0315D000F9B32 /* CocoaGoPushDemoOSX */,
 				55AA05DE18F02899000F9B32 /* Frameworks */,
 				55AA05DD18F02899000F9B32 /* Products */,
 			);
@@ -125,8 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				55AA05DC18F02899000F9B32 /* CocoaGoPushDemo.app */,
-				55AA05F718F02899000F9B32 /* CocoaGoPushTests.xctest */,
 				55AA063C18F02C4D000F9B32 /* CocoaGoPushDemoMRC.app */,
+				55AA064418F0315D000F9B32 /* CocoaGoPushDemoOSX.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,26 +140,10 @@
 				55AA05E118F02899000F9B32 /* CoreGraphics.framework */,
 				55AA05E318F02899000F9B32 /* UIKit.framework */,
 				55AA05F818F02899000F9B32 /* XCTest.framework */,
+				55AA064518F0315D000F9B32 /* Cocoa.framework */,
+				55AA064718F0315D000F9B32 /* Other Frameworks */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		55AA05FE18F02899000F9B32 /* CocoaGoPushTests */ = {
-			isa = PBXGroup;
-			children = (
-				55AA060418F02899000F9B32 /* CocoaGoPushTests.m */,
-				55AA05FF18F02899000F9B32 /* Supporting Files */,
-			);
-			path = CocoaGoPushTests;
-			sourceTree = "<group>";
-		};
-		55AA05FF18F02899000F9B32 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				55AA060018F02899000F9B32 /* CocoaGoPushTests-Info.plist */,
-				55AA060118F02899000F9B32 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		55AA060E18F02936000F9B32 /* CocoaGoPushDemo */ = {
@@ -204,6 +190,40 @@
 			path = CocoaGoPush;
 			sourceTree = "<group>";
 		};
+		55AA064718F0315D000F9B32 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55AA064818F0315D000F9B32 /* AppKit.framework */,
+				55AA064918F0315D000F9B32 /* CoreData.framework */,
+				55AA064A18F0315D000F9B32 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		55AA064B18F0315D000F9B32 /* CocoaGoPushDemoOSX */ = {
+			isa = PBXGroup;
+			children = (
+				55AA065718F0315D000F9B32 /* AppDelegate.h */,
+				55AA065818F0315D000F9B32 /* AppDelegate.m */,
+				55AA065A18F0315D000F9B32 /* MainMenu.xib */,
+				55AA065D18F0315D000F9B32 /* Images.xcassets */,
+				55AA064C18F0315D000F9B32 /* Supporting Files */,
+			);
+			path = CocoaGoPushDemoOSX;
+			sourceTree = "<group>";
+		};
+		55AA064C18F0315D000F9B32 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				55AA064D18F0315D000F9B32 /* CocoaGoPushDemoOSX-Info.plist */,
+				55AA064E18F0315D000F9B32 /* InfoPlist.strings */,
+				55AA065118F0315D000F9B32 /* main.m */,
+				55AA065318F0315D000F9B32 /* CocoaGoPushDemoOSX-Prefix.pch */,
+				55AA065418F0315D000F9B32 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -224,24 +244,6 @@
 			productReference = 55AA05DC18F02899000F9B32 /* CocoaGoPushDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		55AA05F618F02899000F9B32 /* CocoaGoPushTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 55AA060B18F02899000F9B32 /* Build configuration list for PBXNativeTarget "CocoaGoPushTests" */;
-			buildPhases = (
-				55AA05F318F02899000F9B32 /* Sources */,
-				55AA05F418F02899000F9B32 /* Frameworks */,
-				55AA05F518F02899000F9B32 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				55AA05FD18F02899000F9B32 /* PBXTargetDependency */,
-			);
-			name = CocoaGoPushTests;
-			productName = CocoaGoPushTests;
-			productReference = 55AA05F718F02899000F9B32 /* CocoaGoPushTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		55AA062A18F02C4D000F9B32 /* CocoaGoPushDemoMRC */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55AA063918F02C4D000F9B32 /* Build configuration list for PBXNativeTarget "CocoaGoPushDemoMRC" */;
@@ -259,6 +261,23 @@
 			productReference = 55AA063C18F02C4D000F9B32 /* CocoaGoPushDemoMRC.app */;
 			productType = "com.apple.product-type.application";
 		};
+		55AA064318F0315D000F9B32 /* CocoaGoPushDemoOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55AA067418F0315D000F9B32 /* Build configuration list for PBXNativeTarget "CocoaGoPushDemoOSX" */;
+			buildPhases = (
+				55AA064018F0315D000F9B32 /* Sources */,
+				55AA064118F0315D000F9B32 /* Frameworks */,
+				55AA064218F0315D000F9B32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CocoaGoPushDemoOSX;
+			productName = CocoaGoPushDemoOSX;
+			productReference = 55AA064418F0315D000F9B32 /* CocoaGoPushDemoOSX.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -267,11 +286,6 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Gdier <gdier.zh@gmail.com>";
-				TargetAttributes = {
-					55AA05F618F02899000F9B32 = {
-						TestTargetID = 55AA05DB18F02899000F9B32;
-					};
-				};
 			};
 			buildConfigurationList = 55AA05D718F02898000F9B32 /* Build configuration list for PBXProject "CocoaGoPush" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -279,6 +293,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 55AA05D318F02898000F9B32;
 			productRefGroup = 55AA05DD18F02899000F9B32 /* Products */;
@@ -286,8 +301,8 @@
 			projectRoot = "";
 			targets = (
 				55AA05DB18F02899000F9B32 /* CocoaGoPushDemo */,
-				55AA05F618F02899000F9B32 /* CocoaGoPushTests */,
 				55AA062A18F02C4D000F9B32 /* CocoaGoPushDemoMRC */,
+				55AA064318F0315D000F9B32 /* CocoaGoPushDemoOSX */,
 			);
 		};
 /* End PBXProject section */
@@ -304,14 +319,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		55AA05F518F02899000F9B32 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				55AA060318F02899000F9B32 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		55AA063518F02C4D000F9B32 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -319,6 +326,17 @@
 				55AA063618F02C4D000F9B32 /* Images.xcassets in Resources */,
 				55AA063718F02C4D000F9B32 /* InfoPlist.strings in Resources */,
 				55AA063818F02C4D000F9B32 /* DemoViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55AA064218F0315D000F9B32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55AA065018F0315D000F9B32 /* InfoPlist.strings in Resources */,
+				55AA065E18F0315D000F9B32 /* Images.xcassets in Resources */,
+				55AA065618F0315D000F9B32 /* Credits.rtf in Resources */,
+				55AA065C18F0315D000F9B32 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,14 +355,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		55AA05F318F02899000F9B32 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				55AA060518F02899000F9B32 /* CocoaGoPushTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		55AA062B18F02C4D000F9B32 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -357,31 +367,50 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55AA064018F0315D000F9B32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55AA067618F03180000F9B32 /* AsyncSocket.m in Sources */,
+				55AA065918F0315D000F9B32 /* AppDelegate.m in Sources */,
+				55AA065218F0315D000F9B32 /* main.m in Sources */,
+				55AA067718F03184000F9B32 /* CocoaGoPush.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		55AA05FD18F02899000F9B32 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 55AA05DB18F02899000F9B32 /* CocoaGoPushDemo */;
-			targetProxy = 55AA05FC18F02899000F9B32 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		55AA060118F02899000F9B32 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				55AA060218F02899000F9B32 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		55AA061318F02936000F9B32 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				55AA061418F02936000F9B32 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		55AA064E18F0315D000F9B32 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55AA064F18F0315D000F9B32 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		55AA065418F0315D000F9B32 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55AA065518F0315D000F9B32 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		55AA065A18F0315D000F9B32 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55AA065B18F0315D000F9B32 /* Base */,
+			);
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -483,46 +512,6 @@
 			};
 			name = Release;
 		};
-		55AA060C18F02899000F9B32 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CocoaGoPush.app/CocoaGoPush";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CocoaGoPush/CocoaGoPush-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "CocoaGoPushTests/CocoaGoPushTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		55AA060D18F02899000F9B32 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CocoaGoPush.app/CocoaGoPush";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CocoaGoPush/CocoaGoPush-Prefix.pch";
-				INFOPLIST_FILE = "CocoaGoPushTests/CocoaGoPushTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 		55AA063A18F02C4D000F9B32 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -551,6 +540,51 @@
 			};
 			name = Release;
 		};
+		55AA067018F0315D000F9B32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CocoaGoPushDemoOSX/CocoaGoPushDemoOSX-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "CocoaGoPushDemoOSX/CocoaGoPushDemoOSX-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		55AA067118F0315D000F9B32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CocoaGoPushDemoOSX/CocoaGoPushDemoOSX-Prefix.pch";
+				INFOPLIST_FILE = "CocoaGoPushDemoOSX/CocoaGoPushDemoOSX-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -572,20 +606,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		55AA060B18F02899000F9B32 /* Build configuration list for PBXNativeTarget "CocoaGoPushTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				55AA060C18F02899000F9B32 /* Debug */,
-				55AA060D18F02899000F9B32 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		55AA063918F02C4D000F9B32 /* Build configuration list for PBXNativeTarget "CocoaGoPushDemoMRC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				55AA063A18F02C4D000F9B32 /* Debug */,
 				55AA063B18F02C4D000F9B32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55AA067418F0315D000F9B32 /* Build configuration list for PBXNativeTarget "CocoaGoPushDemoOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55AA067018F0315D000F9B32 /* Debug */,
+				55AA067118F0315D000F9B32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

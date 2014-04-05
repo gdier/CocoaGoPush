@@ -120,7 +120,7 @@ NSString * const kGoPushErrorCustomMessageKey   = @"customMessage";
             
         default:
             NSAssert(NO, @"Unknown");
-            text = [NSString stringWithFormat:@"Unknown(%d)", self.code];
+            text = [NSString stringWithFormat:@"Unknown(%ld)", self.code];
     }
     
     if ([self.userInfo[kGoPushErrorCustomMessageKey] length] != 0)
