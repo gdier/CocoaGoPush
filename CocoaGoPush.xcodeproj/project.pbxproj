@@ -1,0 +1,596 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		55AA05E018F02899000F9B32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AA05DF18F02899000F9B32 /* Foundation.framework */; };
+		55AA05E218F02899000F9B32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AA05E118F02899000F9B32 /* CoreGraphics.framework */; };
+		55AA05E418F02899000F9B32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AA05E318F02899000F9B32 /* UIKit.framework */; };
+		55AA05F918F02899000F9B32 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AA05F818F02899000F9B32 /* XCTest.framework */; };
+		55AA05FA18F02899000F9B32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AA05DF18F02899000F9B32 /* Foundation.framework */; };
+		55AA05FB18F02899000F9B32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AA05E318F02899000F9B32 /* UIKit.framework */; };
+		55AA060318F02899000F9B32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55AA060118F02899000F9B32 /* InfoPlist.strings */; };
+		55AA060518F02899000F9B32 /* CocoaGoPushTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AA060418F02899000F9B32 /* CocoaGoPushTests.m */; };
+		55AA061718F02936000F9B32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AA061018F02936000F9B32 /* AppDelegate.m */; };
+		55AA061918F02936000F9B32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55AA061318F02936000F9B32 /* InfoPlist.strings */; };
+		55AA061A18F02936000F9B32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55AA061518F02936000F9B32 /* Images.xcassets */; };
+		55AA061B18F02936000F9B32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AA061618F02936000F9B32 /* main.m */; };
+		55AA062318F02A2A000F9B32 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AA061F18F02A2A000F9B32 /* AsyncSocket.m */; };
+		55AA062418F02A2A000F9B32 /* CocoaGoPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AA062218F02A2A000F9B32 /* CocoaGoPush.m */; };
+		55AA062818F02A91000F9B32 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AA062618F02A91000F9B32 /* DemoViewController.m */; };
+		55AA062918F02A91000F9B32 /* DemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55AA062718F02A91000F9B32 /* DemoViewController.xib */; };
+		55AA062C18F02C4D000F9B32 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AA061F18F02A2A000F9B32 /* AsyncSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		55AA062D18F02C4D000F9B32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AA061618F02936000F9B32 /* main.m */; };
+		55AA062E18F02C4D000F9B32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AA061018F02936000F9B32 /* AppDelegate.m */; };
+		55AA062F18F02C4D000F9B32 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AA062618F02A91000F9B32 /* DemoViewController.m */; };
+		55AA063018F02C4D000F9B32 /* CocoaGoPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 55AA062218F02A2A000F9B32 /* CocoaGoPush.m */; };
+		55AA063218F02C4D000F9B32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AA05E118F02899000F9B32 /* CoreGraphics.framework */; };
+		55AA063318F02C4D000F9B32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AA05E318F02899000F9B32 /* UIKit.framework */; };
+		55AA063418F02C4D000F9B32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AA05DF18F02899000F9B32 /* Foundation.framework */; };
+		55AA063618F02C4D000F9B32 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55AA061518F02936000F9B32 /* Images.xcassets */; };
+		55AA063718F02C4D000F9B32 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55AA061318F02936000F9B32 /* InfoPlist.strings */; };
+		55AA063818F02C4D000F9B32 /* DemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55AA062718F02A91000F9B32 /* DemoViewController.xib */; };
+		55AA063F18F02D3B000F9B32 /* CocoaGoPushDemoMRC-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55AA063E18F02D3B000F9B32 /* CocoaGoPushDemoMRC-Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		55AA05FC18F02899000F9B32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55AA05D418F02898000F9B32 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55AA05DB18F02899000F9B32;
+			remoteInfo = CocoaGoPush;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		55AA05DC18F02899000F9B32 /* CocoaGoPushDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaGoPushDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		55AA05DF18F02899000F9B32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		55AA05E118F02899000F9B32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		55AA05E318F02899000F9B32 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		55AA05F718F02899000F9B32 /* CocoaGoPushTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocoaGoPushTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		55AA05F818F02899000F9B32 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		55AA060018F02899000F9B32 /* CocoaGoPushTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CocoaGoPushTests-Info.plist"; sourceTree = "<group>"; };
+		55AA060218F02899000F9B32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55AA060418F02899000F9B32 /* CocoaGoPushTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CocoaGoPushTests.m; sourceTree = "<group>"; };
+		55AA060F18F02936000F9B32 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		55AA061018F02936000F9B32 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		55AA061118F02936000F9B32 /* CocoaGoPush-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CocoaGoPush-Info.plist"; sourceTree = "<group>"; };
+		55AA061218F02936000F9B32 /* CocoaGoPush-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CocoaGoPush-Prefix.pch"; sourceTree = "<group>"; };
+		55AA061418F02936000F9B32 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55AA061518F02936000F9B32 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		55AA061618F02936000F9B32 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		55AA061E18F02A2A000F9B32 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		55AA061F18F02A2A000F9B32 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		55AA062118F02A2A000F9B32 /* CocoaGoPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaGoPush.h; sourceTree = "<group>"; };
+		55AA062218F02A2A000F9B32 /* CocoaGoPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaGoPush.m; sourceTree = "<group>"; };
+		55AA062518F02A91000F9B32 /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
+		55AA062618F02A91000F9B32 /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
+		55AA062718F02A91000F9B32 /* DemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoViewController.xib; sourceTree = "<group>"; };
+		55AA063C18F02C4D000F9B32 /* CocoaGoPushDemoMRC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaGoPushDemoMRC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		55AA063E18F02D3B000F9B32 /* CocoaGoPushDemoMRC-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CocoaGoPushDemoMRC-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		55AA05D918F02899000F9B32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55AA05E218F02899000F9B32 /* CoreGraphics.framework in Frameworks */,
+				55AA05E418F02899000F9B32 /* UIKit.framework in Frameworks */,
+				55AA05E018F02899000F9B32 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55AA05F418F02899000F9B32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55AA05F918F02899000F9B32 /* XCTest.framework in Frameworks */,
+				55AA05FB18F02899000F9B32 /* UIKit.framework in Frameworks */,
+				55AA05FA18F02899000F9B32 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55AA063118F02C4D000F9B32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55AA063218F02C4D000F9B32 /* CoreGraphics.framework in Frameworks */,
+				55AA063318F02C4D000F9B32 /* UIKit.framework in Frameworks */,
+				55AA063418F02C4D000F9B32 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		55AA05D318F02898000F9B32 = {
+			isa = PBXGroup;
+			children = (
+				55AA061C18F02A2A000F9B32 /* 3rdParty */,
+				55AA062018F02A2A000F9B32 /* CocoaGoPush */,
+				55AA060E18F02936000F9B32 /* CocoaGoPushDemo */,
+				55AA05FE18F02899000F9B32 /* CocoaGoPushTests */,
+				55AA05DE18F02899000F9B32 /* Frameworks */,
+				55AA05DD18F02899000F9B32 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		55AA05DD18F02899000F9B32 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				55AA05DC18F02899000F9B32 /* CocoaGoPushDemo.app */,
+				55AA05F718F02899000F9B32 /* CocoaGoPushTests.xctest */,
+				55AA063C18F02C4D000F9B32 /* CocoaGoPushDemoMRC.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		55AA05DE18F02899000F9B32 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55AA05DF18F02899000F9B32 /* Foundation.framework */,
+				55AA05E118F02899000F9B32 /* CoreGraphics.framework */,
+				55AA05E318F02899000F9B32 /* UIKit.framework */,
+				55AA05F818F02899000F9B32 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		55AA05FE18F02899000F9B32 /* CocoaGoPushTests */ = {
+			isa = PBXGroup;
+			children = (
+				55AA060418F02899000F9B32 /* CocoaGoPushTests.m */,
+				55AA05FF18F02899000F9B32 /* Supporting Files */,
+			);
+			path = CocoaGoPushTests;
+			sourceTree = "<group>";
+		};
+		55AA05FF18F02899000F9B32 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				55AA060018F02899000F9B32 /* CocoaGoPushTests-Info.plist */,
+				55AA060118F02899000F9B32 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		55AA060E18F02936000F9B32 /* CocoaGoPushDemo */ = {
+			isa = PBXGroup;
+			children = (
+				55AA060F18F02936000F9B32 /* AppDelegate.h */,
+				55AA061018F02936000F9B32 /* AppDelegate.m */,
+				55AA062518F02A91000F9B32 /* DemoViewController.h */,
+				55AA062618F02A91000F9B32 /* DemoViewController.m */,
+				55AA062718F02A91000F9B32 /* DemoViewController.xib */,
+				55AA061118F02936000F9B32 /* CocoaGoPush-Info.plist */,
+				55AA063E18F02D3B000F9B32 /* CocoaGoPushDemoMRC-Info.plist */,
+				55AA061218F02936000F9B32 /* CocoaGoPush-Prefix.pch */,
+				55AA061318F02936000F9B32 /* InfoPlist.strings */,
+				55AA061518F02936000F9B32 /* Images.xcassets */,
+				55AA061618F02936000F9B32 /* main.m */,
+			);
+			path = CocoaGoPushDemo;
+			sourceTree = "<group>";
+		};
+		55AA061C18F02A2A000F9B32 /* 3rdParty */ = {
+			isa = PBXGroup;
+			children = (
+				55AA061D18F02A2A000F9B32 /* CocoaAsyncSocket */,
+			);
+			path = 3rdParty;
+			sourceTree = "<group>";
+		};
+		55AA061D18F02A2A000F9B32 /* CocoaAsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				55AA061E18F02A2A000F9B32 /* AsyncSocket.h */,
+				55AA061F18F02A2A000F9B32 /* AsyncSocket.m */,
+			);
+			path = CocoaAsyncSocket;
+			sourceTree = "<group>";
+		};
+		55AA062018F02A2A000F9B32 /* CocoaGoPush */ = {
+			isa = PBXGroup;
+			children = (
+				55AA062118F02A2A000F9B32 /* CocoaGoPush.h */,
+				55AA062218F02A2A000F9B32 /* CocoaGoPush.m */,
+			);
+			path = CocoaGoPush;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		55AA05DB18F02899000F9B32 /* CocoaGoPushDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55AA060818F02899000F9B32 /* Build configuration list for PBXNativeTarget "CocoaGoPushDemo" */;
+			buildPhases = (
+				55AA05D818F02899000F9B32 /* Sources */,
+				55AA05D918F02899000F9B32 /* Frameworks */,
+				55AA05DA18F02899000F9B32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CocoaGoPushDemo;
+			productName = CocoaGoPush;
+			productReference = 55AA05DC18F02899000F9B32 /* CocoaGoPushDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		55AA05F618F02899000F9B32 /* CocoaGoPushTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55AA060B18F02899000F9B32 /* Build configuration list for PBXNativeTarget "CocoaGoPushTests" */;
+			buildPhases = (
+				55AA05F318F02899000F9B32 /* Sources */,
+				55AA05F418F02899000F9B32 /* Frameworks */,
+				55AA05F518F02899000F9B32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55AA05FD18F02899000F9B32 /* PBXTargetDependency */,
+			);
+			name = CocoaGoPushTests;
+			productName = CocoaGoPushTests;
+			productReference = 55AA05F718F02899000F9B32 /* CocoaGoPushTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		55AA062A18F02C4D000F9B32 /* CocoaGoPushDemoMRC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55AA063918F02C4D000F9B32 /* Build configuration list for PBXNativeTarget "CocoaGoPushDemoMRC" */;
+			buildPhases = (
+				55AA062B18F02C4D000F9B32 /* Sources */,
+				55AA063118F02C4D000F9B32 /* Frameworks */,
+				55AA063518F02C4D000F9B32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CocoaGoPushDemoMRC;
+			productName = CocoaGoPush;
+			productReference = 55AA063C18F02C4D000F9B32 /* CocoaGoPushDemoMRC.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		55AA05D418F02898000F9B32 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Gdier <gdier.zh@gmail.com>";
+				TargetAttributes = {
+					55AA05F618F02899000F9B32 = {
+						TestTargetID = 55AA05DB18F02899000F9B32;
+					};
+				};
+			};
+			buildConfigurationList = 55AA05D718F02898000F9B32 /* Build configuration list for PBXProject "CocoaGoPush" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 55AA05D318F02898000F9B32;
+			productRefGroup = 55AA05DD18F02899000F9B32 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				55AA05DB18F02899000F9B32 /* CocoaGoPushDemo */,
+				55AA05F618F02899000F9B32 /* CocoaGoPushTests */,
+				55AA062A18F02C4D000F9B32 /* CocoaGoPushDemoMRC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		55AA05DA18F02899000F9B32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55AA061A18F02936000F9B32 /* Images.xcassets in Resources */,
+				55AA061918F02936000F9B32 /* InfoPlist.strings in Resources */,
+				55AA063F18F02D3B000F9B32 /* CocoaGoPushDemoMRC-Info.plist in Resources */,
+				55AA062918F02A91000F9B32 /* DemoViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55AA05F518F02899000F9B32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55AA060318F02899000F9B32 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55AA063518F02C4D000F9B32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55AA063618F02C4D000F9B32 /* Images.xcassets in Resources */,
+				55AA063718F02C4D000F9B32 /* InfoPlist.strings in Resources */,
+				55AA063818F02C4D000F9B32 /* DemoViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		55AA05D818F02899000F9B32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55AA062318F02A2A000F9B32 /* AsyncSocket.m in Sources */,
+				55AA061B18F02936000F9B32 /* main.m in Sources */,
+				55AA061718F02936000F9B32 /* AppDelegate.m in Sources */,
+				55AA062818F02A91000F9B32 /* DemoViewController.m in Sources */,
+				55AA062418F02A2A000F9B32 /* CocoaGoPush.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55AA05F318F02899000F9B32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55AA060518F02899000F9B32 /* CocoaGoPushTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55AA062B18F02C4D000F9B32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55AA062C18F02C4D000F9B32 /* AsyncSocket.m in Sources */,
+				55AA062D18F02C4D000F9B32 /* main.m in Sources */,
+				55AA062E18F02C4D000F9B32 /* AppDelegate.m in Sources */,
+				55AA062F18F02C4D000F9B32 /* DemoViewController.m in Sources */,
+				55AA063018F02C4D000F9B32 /* CocoaGoPush.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		55AA05FD18F02899000F9B32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55AA05DB18F02899000F9B32 /* CocoaGoPushDemo */;
+			targetProxy = 55AA05FC18F02899000F9B32 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		55AA060118F02899000F9B32 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55AA060218F02899000F9B32 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		55AA061318F02936000F9B32 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55AA061418F02936000F9B32 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		55AA060618F02899000F9B32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		55AA060718F02899000F9B32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		55AA060918F02899000F9B32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CocoaGoPushDemo/CocoaGoPush-Prefix.pch";
+				INFOPLIST_FILE = "CocoaGoPushDemo/CocoaGoPush-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		55AA060A18F02899000F9B32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CocoaGoPushDemo/CocoaGoPush-Prefix.pch";
+				INFOPLIST_FILE = "CocoaGoPushDemo/CocoaGoPush-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		55AA060C18F02899000F9B32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CocoaGoPush.app/CocoaGoPush";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CocoaGoPush/CocoaGoPush-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "CocoaGoPushTests/CocoaGoPushTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		55AA060D18F02899000F9B32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CocoaGoPush.app/CocoaGoPush";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CocoaGoPush/CocoaGoPush-Prefix.pch";
+				INFOPLIST_FILE = "CocoaGoPushTests/CocoaGoPushTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		55AA063A18F02C4D000F9B32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CocoaGoPushDemo/CocoaGoPush-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/CocoaGoPushDemo/CocoaGoPushDemoMRC-Info.plist";
+				PRODUCT_NAME = CocoaGoPushDemoMRC;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		55AA063B18F02C4D000F9B32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CocoaGoPushDemo/CocoaGoPush-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/CocoaGoPushDemo/CocoaGoPushDemoMRC-Info.plist";
+				PRODUCT_NAME = CocoaGoPushDemoMRC;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		55AA05D718F02898000F9B32 /* Build configuration list for PBXProject "CocoaGoPush" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55AA060618F02899000F9B32 /* Debug */,
+				55AA060718F02899000F9B32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55AA060818F02899000F9B32 /* Build configuration list for PBXNativeTarget "CocoaGoPushDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55AA060918F02899000F9B32 /* Debug */,
+				55AA060A18F02899000F9B32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55AA060B18F02899000F9B32 /* Build configuration list for PBXNativeTarget "CocoaGoPushTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55AA060C18F02899000F9B32 /* Debug */,
+				55AA060D18F02899000F9B32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55AA063918F02C4D000F9B32 /* Build configuration list for PBXNativeTarget "CocoaGoPushDemoMRC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55AA063A18F02C4D000F9B32 /* Debug */,
+				55AA063B18F02C4D000F9B32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 55AA05D418F02898000F9B32 /* Project object */;
+}

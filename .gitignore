@@ -6,3 +6,6 @@
 #
 # Pods/
 
+xcuserdata
+.DS_Store
+build/*
