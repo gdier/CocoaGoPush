@@ -310,7 +310,9 @@ void CocoaGoPushLog(NSString *format, ...) {
     if (CocoaGoPushStateSubcribed != self.state)
         return;
     
-    [self fetchOfflineMessages];
+    if (nil != self.lastMidMap)
+        [self fetchOfflineMessages];
+    
     [self connectCometServer];
 }
 
