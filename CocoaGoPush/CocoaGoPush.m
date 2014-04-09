@@ -19,6 +19,8 @@
 
 // HTTP
 #define kGoPushProtocolGetOfflineMessage    @"/msg/get"
+#define kGoPushProtocolGetOfflineMessagePublicMsgKey    @"msgs"
+#define kGoPushProtocolGetOfflineMessagePrivateMsgKey   @"pmsgs"
 
 NSTimeInterval const CocoaGoPushDefaultNetworkTimeout = 5.f;
 NSTimeInterval const CocoaGoPushHeartBeatInterval = 30.f;
@@ -120,7 +122,7 @@ NSString * const kGoPushErrorCustomMessageKey   = @"customMessage";
             
         default:
             NSAssert(NO, @"Unknown");
-            text = [NSString stringWithFormat:@"Unknown(%ld)", self.code];
+            text = [NSString stringWithFormat:@"Unknown(%ld)", (long)self.code];
     }
     
     if ([self.userInfo[kGoPushErrorCustomMessageKey] length] != 0)
@@ -235,6 +237,7 @@ void CocoaGoPushLog(NSString *format, ...) {
 @property(atomic,retain) NSTimer *cometHeartBeatTimer;
 @property(atomic,retain) NSMutableData *cometUnreadedResponseData;
 @property(atomic,retain) NSMutableDictionary *cometResponseParsingContext;
+@property(atomic,retain) NSMutableDictionary *lastMidMap;
 
 @end
 
@@ -251,6 +254,7 @@ void CocoaGoPushLog(NSString *format, ...) {
     self.cometHeartBeatTimer = nil;
     self.cometUnreadedResponseData = nil;
     self.cometResponseParsingContext = nil;
+    self.lastMidMap = nil;
     
     CocoaGoPushLog(@"dealloc %p", self);
 
@@ -271,13 +275,21 @@ void CocoaGoPushLog(NSString *format, ...) {
 }
 
 - (void)connectWithKey:(NSString *)key {
+    [self connectWithParam:@{@"k" : key}];
+}
+
+- (void)connectWithKey:(NSString *)key lastMidMap:(NSDictionary *)midMap {
+    [self connectWithParam:@{@"k" : key, @"m" : midMap}];
+}
+
+- (void)connectWithParam:(NSDictionary *)params {
     if (nil == self.workThread) {
         self.workThread = [[[NSThread alloc] initWithTarget:self selector:@selector(workThreadProc) object:nil] cgp_autorelease];
         [self.workThread start];
     }
     
     if (![[NSThread currentThread] isEqual:self.workThread]) {
-        [self performSelector:@selector(connectWithKey:) onThread:self.workThread withObject:key waitUntilDone:NO];
+        [self performSelector:@selector(connectWithParam:) onThread:self.workThread withObject:params waitUntilDone:NO];
         return;
     }
     
@@ -286,12 +298,34 @@ void CocoaGoPushLog(NSString *format, ...) {
     }
     
     [self changeState:CocoaGoPushStateSubcribing];
+    
+    NSString *key = params[@"k"];
+    NSDictionary *lastMidMap = params[@"m"];
+    
+    self.key = key;
+    self.lastMidMap = [lastMidMap mutableCopy];
+    
+    [self subcribe];
+    
+    if (CocoaGoPushStateSubcribed != self.state)
+        return;
+    
+    [self fetchOfflineMessages];
+    [self connectCometServer];
+}
 
-    CocoaGoPushLog(@"SubcribeWithKey %@", key);
+- (void)subcribe {
+    
+    CocoaGoPushLog(@"SubcribeWithKey %@", self.key);
+    
+    if (self.key.length == 0) {
+        [self reportError:[CocoaGoPushError errorWithCode:GoPushErrorCode_InvalidParameters ofProtocol:kGoPushProtocolSubcribe]];
+        return;
+    }
     
     NSError *error = nil;
     NSDictionary *subcribeResult = [self callWebProtocolWithProtocol:kGoPushProtocolSubcribe
-                                                          parameters:@{@"key" : key, @"proto" : @"2"}
+                                                          parameters:@{@"key" : self.key, @"proto" : @"2"}
                                                                error:&error];
     
     if (nil != error) {
@@ -311,32 +345,90 @@ void CocoaGoPushLog(NSString *format, ...) {
         return;
     }
     
-    NSString *goPushServerHost = serverComponents[0];
-    NSUInteger goPushServerPort = [serverComponents[1] integerValue];
-    
-    self.key = key;
-
     CocoaGoPushLog(@"Subcribe Success With Server(%@)", server);
     
     [self changeState:CocoaGoPushStateSubcribed];
     
+    self.cometServerHost = serverComponents[0];
+    self.cometServerPort = [serverComponents[1] integerValue];
+    
     if ([self.delegate respondsToSelector:@selector(cocoaGoPush:subcribedWith:)]) {
-        [self.delegate cocoaGoPush:self subcribedWith:key];
+        [self.delegate cocoaGoPush:self subcribedWith:self.key];
     }
     
-    [self connectComet:goPushServerHost port:goPushServerPort];
+    return;
 }
 
-- (void)connectComet:(NSString *)host port:(NSUInteger)port {
+- (void)fetchOfflineMessages {
+    if (nil == self.lastMidMap)
+        return;
+    
+    if (nil == self.lastMidMap[@(CocoaGoPushGidPublic)] && nil == self.lastMidMap[@(CocoaGoPushGidPrivate)])
+        return;
+    
+    [self changeState:CocoaGoPushStateFetchingOfflineMessage];
+    
+    NSError *error = nil;
+    NSDictionary *subcribeResult = [self callWebProtocolWithProtocol:kGoPushProtocolGetOfflineMessage
+                                                          parameters:@{@"key" : self.key,
+                                                                       @"pmid" : self.lastMidMap[@(CocoaGoPushGidPublic)],
+                                                                       @"mid" : self.lastMidMap[@(CocoaGoPushGidPrivate)],
+                                                                       }
+                                                               error:&error];
+    
+    if (nil != error) {
+        [self reportError:error];
+        return;
+    }
+    
+    NSDictionary *map = @{kGoPushProtocolGetOfflineMessagePublicMsgKey : @(CocoaGoPushGidPublic),
+                          kGoPushProtocolGetOfflineMessagePrivateMsgKey : @(CocoaGoPushGidPrivate)};
+    
+    [map enumerateKeysAndObjectsUsingBlock:^(NSString *key, id gid, BOOL *stop) {
+        NSArray *messages;
+        uint64_t maxMid;
+        
+        messages = subcribeResult[key];
+        maxMid = [self.lastMidMap[gid] longLongValue];
+        
+        if (![messages isKindOfClass:[NSArray class]])
+            return;
+        
+        for (NSString *messageText in messages) {
+            id jsonObj = [NSJSONSerialization JSONObjectWithData:[messageText dataUsingEncoding:NSUTF8StringEncoding]
+                                                         options:0 error:nil];
+            if (nil == jsonObj)
+                continue;
+            
+            CocoaGoPushMessage *message = [CocoaGoPushMessage messageFromDictionary:jsonObj];
+            if (nil != message) {
+                if (maxMid < message.mid)
+                    maxMid = message.mid;
+                
+                message.gid = [gid integerValue];
+                
+                if ([self.delegate respondsToSelector:@selector(cocoaGoPush:received:offlineMessage:)]) {
+                    [self.delegate cocoaGoPush:self received:message offlineMessage:YES];
+                }
+                
+                continue;
+            }
+        }
+        
+        self.lastMidMap[gid] = @(maxMid);
+    }];
+}
+
+- (void)connectCometServer {
     [self changeState:CocoaGoPushStateConnecting];
     
-    CocoaGoPushLog(@"Connecting Comet<%@:%d>", host, port);
+    CocoaGoPushLog(@"Connecting Comet<%@:%d>", self.cometServerHost, self.cometServerPort);
     
     NSError *retError = nil;
     AsyncSocket *socket = [[[AsyncSocket alloc] initWithDelegate:self] cgp_autorelease];
 
     @try {
-        BOOL retCode = [socket connectToHost:host onPort:port withTimeout:self.timeout error:&retError];
+        BOOL retCode = [socket connectToHost:self.cometServerHost onPort:self.cometServerPort withTimeout:self.timeout error:&retError];
         if (!retCode || nil != retError) {
             [self reportError:[CocoaGoPushError errorWithCode:GoPushErrorCode_Network originalError:retError ofProtocol:kGoPushProtocolComet]];
             return;
@@ -347,8 +439,6 @@ void CocoaGoPushLog(NSString *format, ...) {
         return;
     }
     
-    self.cometServerHost = host;
-    self.cometServerPort = port;
     self.cometSocket = socket;
     self.cometResponseParsingContext = [NSMutableDictionary dictionary];
 
@@ -419,8 +509,8 @@ void CocoaGoPushLog(NSString *format, ...) {
 - (NSString *)queryStringWithDictionary:(NSDictionary *)parameters {
     NSMutableArray *paramList = [[NSMutableArray alloc] initWithCapacity:[parameters count]];
     
-    [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *param, NSString *value, BOOL *stop) {
-        [paramList addObject:[NSString stringWithFormat:@"%@=%@", param, [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *param, id value, BOOL *stop) {
+        [paramList addObject:[NSString stringWithFormat:@"%@=%@", param, [[value description] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     }];
     
     NSString *queryString = [paramList componentsJoinedByString:@"&"];
@@ -641,8 +731,11 @@ void CocoaGoPushLog(NSString *format, ...) {
                         
                         CocoaGoPushMessage *message = [CocoaGoPushMessage messageFromDictionary:msgDictionary];
                         if (nil != message) {
-                            if ([self.delegate respondsToSelector:@selector(cocoaGoPush:received:offlineMessage:)]) {
-                                [self.delegate cocoaGoPush:self received:message offlineMessage:NO];
+                            uint64_t lastMid = [self.lastMidMap[@(message.gid)] longLongValue];
+                            if (lastMid < message.mid) {
+                                if ([self.delegate respondsToSelector:@selector(cocoaGoPush:received:offlineMessage:)]) {
+                                    [self.delegate cocoaGoPush:self received:message offlineMessage:NO];
+                                }
                             }
                             
                             self.cometResponseParsingContext[kContextState] = @(kContextStateNew);

@@ -52,7 +52,9 @@
         self.goPush.delegate = self;
     }
     
-    [self.goPush connectWithKey:@"testKey"];
+    [self.goPush connectWithKey:@"testKey" lastMidMap:@{@(CocoaGoPushGidPrivate) : @(0),
+                                                        @(CocoaGoPushGidPublic) : @(0),
+                                                        }];
 }
 
 - (IBAction)onDisconnect {

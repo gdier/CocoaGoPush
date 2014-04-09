@@ -36,7 +36,9 @@
         self.goPush.delegate = self;
     }
     
-    [self.goPush connectWithKey:@"testKey"];
+    [self.goPush connectWithKey:@"testKey" lastMidMap:@{@(CocoaGoPushGidPrivate) : @(0),
+                                                        @(CocoaGoPushGidPublic) : @(0),
+                                                        }];
 }
 
 - (IBAction)onDisconnect:(id)sender {
@@ -65,7 +67,7 @@
 }
 
 - (void)cocoaGoPush:(CocoaGoPush *)goPush received:(CocoaGoPushMessage *)message offlineMessage:(BOOL)offlineMessage {
-    NSLog(@"%@", message.msg);
+    NSLog(@"%d %llu %@", offlineMessage, message.mid, message.msg);
 }
 
 @end

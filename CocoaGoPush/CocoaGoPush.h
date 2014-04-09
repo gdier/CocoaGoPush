@@ -36,9 +36,15 @@ typedef NS_ENUM(NSInteger, CocoaGoPushState) {
     CocoaGoPushStateOffline = 0,
     CocoaGoPushStateSubcribing,
     CocoaGoPushStateSubcribed,
+    CocoaGoPushStateFetchingOfflineMessage,
     CocoaGoPushStateConnecting,
     CocoaGoPushStateReady,
     CocoaGoPushStateDisconnecting,
+};
+
+typedef NS_ENUM(NSInteger, CocoaGoPushGid) {
+    CocoaGoPushGidPrivate = 0,
+    CocoaGoPushGidPublic = 1,
 };
 
 extern NSTimeInterval const CocoaGoPushDefaultNetworkTimeout;
@@ -58,7 +64,7 @@ extern NSTimeInterval const CocoaGoPushDefaultNetworkTimeout;
 
 @property(nonatomic,retain,readonly) NSString *msg;
 @property(nonatomic,readonly) uint64_t mid;
-@property(nonatomic,readonly) NSInteger gid;
+@property(nonatomic,readonly) NSInteger gid; /* see CocoaGoPushGid */
 
 @end
 
@@ -75,6 +81,7 @@ extern NSTimeInterval const CocoaGoPushDefaultNetworkTimeout;
 - (instancetype)initWithServerHost:(NSString *)host port:(NSUInteger)port;
 
 - (void)connectWithKey:(NSString *)key;
+- (void)connectWithKey:(NSString *)key lastMidMap:(NSDictionary *)midMap;
 - (void)disconnect;
 
 @end
