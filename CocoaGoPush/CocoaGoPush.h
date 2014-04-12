@@ -82,6 +82,7 @@ extern NSTimeInterval const CocoaGoPushDefaultNetworkTimeout;
 
 - (void)connectWithKey:(NSString *)key;
 - (void)connectWithKey:(NSString *)key lastMidMap:(NSDictionary *)midMap;
+- (void)connectCometWithHost:(NSString *)host port:(NSInteger)port key:(NSString *)key;
 - (void)disconnect;
 
 @end

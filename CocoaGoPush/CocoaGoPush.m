@@ -261,15 +261,22 @@ void CocoaGoPushLog(NSString *format, ...) {
     [super cgp_dealloc];
 }
 
-- (instancetype)initWithServerHost:(NSString *)host port:(NSUInteger)port {
+- (instancetype)init {
     self = [super init];
     if (self) {
-        self.host = host;
-        self.port = port;
         self.state = CocoaGoPushStateOffline;
         self.timeout = CocoaGoPushDefaultNetworkTimeout;
         
         CocoaGoPushLog(@"init %p", self);
+    }
+    return self;
+}
+
+- (instancetype)initWithServerHost:(NSString *)host port:(NSUInteger)port {
+    self = [self init];
+    if (self) {
+        self.host = host;
+        self.port = port;
     }
     return self;
 }
@@ -421,6 +428,31 @@ void CocoaGoPushLog(NSString *format, ...) {
     }];
 }
 
+- (void)connectCometWithHost:(NSString *)host port:(NSInteger)port key:(NSString *)key {
+    [self connectCometWithParam:@{@"h" : host, @"p" : @(port), @"k" : key}];
+}
+
+- (void)connectCometWithParam:(NSDictionary *)params {
+    if (nil == self.workThread) {
+        self.workThread = [[[NSThread alloc] initWithTarget:self selector:@selector(workThreadProc) object:nil] cgp_autorelease];
+        [self.workThread start];
+    }
+    
+    if (![[NSThread currentThread] isEqual:self.workThread]) {
+        [self performSelector:@selector(connectCometWithParam:) onThread:self.workThread withObject:params waitUntilDone:NO];
+        return;
+    }
+    
+    if (CocoaGoPushStateOffline != self.state) {
+        return;
+    }
+
+    self.key = params[@"k"];
+    self.cometServerHost = params[@"h"];
+    self.cometServerPort = [params[@"p"] integerValue];
+    
+    [self connectCometServer];
+}
 - (void)connectCometServer {
     [self changeState:CocoaGoPushStateConnecting];
     
@@ -726,7 +758,7 @@ void CocoaGoPushLog(NSString *format, ...) {
                 }
             } break;
             case kContextStateMessage: {
-                if (line.length == [self.cometResponseParsingContext[kContextMsgSize] integerValue]) {
+                if ([line dataUsingEncoding:NSUTF8StringEncoding].length == [self.cometResponseParsingContext[kContextMsgSize] integerValue]) {
                     id msgDictionary = [NSJSONSerialization JSONObjectWithData:[line dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
                     
                     if ([msgDictionary isKindOfClass:[NSDictionary class]]) {
