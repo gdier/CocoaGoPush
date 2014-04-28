@@ -62,7 +62,7 @@ extern NSTimeInterval const CocoaGoPushDefaultNetworkTimeout;
 
 @interface CocoaGoPushMessage : NSObject
 
-@property(nonatomic,retain,readonly) NSString *msg;
+@property(nonatomic,retain,readonly) id msg;
 @property(nonatomic,readonly) uint64_t mid;
 @property(nonatomic,readonly) NSInteger gid; /* see CocoaGoPushGid */
 

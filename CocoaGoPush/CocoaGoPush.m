@@ -171,7 +171,7 @@ NSString * const kGoPushErrorCustomMessageKey   = @"customMessage";
 
 @interface CocoaGoPushMessage ()
 
-@property(nonatomic,retain) NSString *msg;
+@property(nonatomic,retain) id msg;
 @property(nonatomic) uint64_t mid;
 @property(nonatomic) NSInteger gid;
 
@@ -188,7 +188,7 @@ NSString * const kGoPushErrorCustomMessageKey   = @"customMessage";
 + (instancetype)messageFromDictionary:(NSDictionary *)dict {
     CocoaGoPushMessage *message = [[[CocoaGoPushMessage alloc] init] cgp_autorelease];
     
-    message.msg = [dict[@"msg"] description];
+    message.msg = dict[@"msg"];
     message.mid = [dict[@"mid"] unsignedLongLongValue];
     message.gid = [dict[@"gid"] integerValue];
     
@@ -317,8 +317,8 @@ void CocoaGoPushLog(NSString *format, ...) {
     if (CocoaGoPushStateSubcribed != self.state)
         return;
     
-    if (nil != self.lastMidMap)
-        [self fetchOfflineMessages];
+//    if (nil != self.lastMidMap)
+//        [self fetchOfflineMessages];
     
     [self connectCometServer];
 }
@@ -607,9 +607,10 @@ void CocoaGoPushLog(NSString *format, ...) {
     return responseObject[@"data"];
 }
 
-- (NSData *)buildCommandWithDictionary:(NSDictionary *)dictionary {
-    NSMutableString *commandString = [NSMutableString stringWithFormat:@"*%lu\r\n", (unsigned long)dictionary.count];
-    [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
+- (NSData *)buildCommandWithDictionary:(NSArray *)array {
+    NSMutableString *commandString = [NSMutableString stringWithFormat:@"*%lu\r\n",
+                                      (unsigned long)array.count];
+    [array enumerateObjectsUsingBlock:^(id value, NSUInteger idx, BOOL *stop) {
         NSString *valueString = [value description];
         NSUInteger valueLength = [[valueString dataUsingEncoding:NSUTF8StringEncoding] length];
         [commandString appendFormat:@"$%lu\r\n%@\r\n", (unsigned long)valueLength, valueString];
@@ -618,7 +619,7 @@ void CocoaGoPushLog(NSString *format, ...) {
     return [commandString dataUsingEncoding:NSUTF8StringEncoding];
 }
 
-- (void)sendCometCommand:(NSDictionary *)command {
+- (void)sendCometCommand:(NSArray *)command {
     NSData *commandData = [self buildCommandWithDictionary:command];
     if ([commandData length] == 0)
         return;
@@ -628,10 +629,12 @@ void CocoaGoPushLog(NSString *format, ...) {
 }
 
 - (void)sendSubcribeCommandToCometServer {
-    NSDictionary *command = @{@"cmd" : @"sub",
-                              @"key" : self.key,
-                              @"heartbeat" : @((int)CocoaGoPushHeartBeatInterval + CocoaGoPushDefaultNetworkTimeout),
-                              };
+    NSArray *command = @[@"sub",
+                         self.key,
+                         @((int)CocoaGoPushHeartBeatInterval + CocoaGoPushDefaultNetworkTimeout),
+                         @"",
+                         @"1.0",
+                         ];
     
     [self sendCometCommand:command];
 }
@@ -800,7 +803,9 @@ void CocoaGoPushLog(NSString *format, ...) {
     if (![sock isEqual:self.cometSocket])
         return;
     
-    [self reportError:[CocoaGoPushError errorWithCode:GoPushErrorCode_Network originalError:err ofProtocol:kGoPushProtocolComet]];
+    if (nil != err) {
+        [self reportError:[CocoaGoPushError errorWithCode:GoPushErrorCode_Network originalError:err ofProtocol:kGoPushProtocolComet]];
+    }
 }
 
 /**
@@ -816,6 +821,8 @@ void CocoaGoPushLog(NSString *format, ...) {
     
     CocoaGoPushLog(@"Comet didDisconnect");
     sock.delegate = nil;
+    
+    [self disconnect];
 }
 
 /**
