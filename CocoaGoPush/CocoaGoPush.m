@@ -14,11 +14,11 @@
 #define kGoPushProtocolComet                @"comet"
 
 // HTTP
-#define kGoPushProtocolSubcribe             @"/server/get"
+#define kGoPushProtocolSubcribe             @"/1/server/get"
 #define kGoPushProtocolSubcribeServerKey    @"server"
 
 // HTTP
-#define kGoPushProtocolGetOfflineMessage    @"/msg/get"
+#define kGoPushProtocolGetOfflineMessage    @"/1/msg/get"
 #define kGoPushProtocolGetOfflineMessagePublicMsgKey    @"msgs"
 #define kGoPushProtocolGetOfflineMessagePrivateMsgKey   @"pmsgs"
 
@@ -333,7 +333,7 @@ void CocoaGoPushLog(NSString *format, ...) {
     
     NSError *error = nil;
     NSDictionary *subcribeResult = [self callWebProtocolWithProtocol:kGoPushProtocolSubcribe
-                                                          parameters:@{@"key" : self.key, @"proto" : @"2"}
+                                                          parameters:@{@"k" : self.key, @"p" : @"2"}
                                                                error:&error];
     
     if (nil != error) {
@@ -387,9 +387,9 @@ void CocoaGoPushLog(NSString *format, ...) {
     
     [self performSelectorInBackground:@selector(fetchOfflineMessagesProc:)
                            withObject:@[self.workThread,
-                                        @{@"key" : self.key,
-                                          @"pmid" : self.lastMidMap[@(CocoaGoPushGidPublic)],
-                                          @"mid" : self.lastMidMap[@(CocoaGoPushGidPrivate)],
+                                        @{@"k" : self.key,
+                                          @"p" : self.lastMidMap[@(CocoaGoPushGidPublic)],
+                                          @"m" : self.lastMidMap[@(CocoaGoPushGidPrivate)],
                                           }
                                         ]];
 }
@@ -423,11 +423,11 @@ void CocoaGoPushLog(NSString *format, ...) {
             if (![messages isKindOfClass:[NSArray class]])
                 return;
             
-            for (NSString *messageText in messages) {
-                id jsonObj = [NSJSONSerialization JSONObjectWithData:[messageText dataUsingEncoding:NSUTF8StringEncoding]
-                                                             options:0 error:nil];
-                if (nil == jsonObj)
-                    continue;
+            for (id jsonObj in messages) {
+//                id jsonObj = [NSJSONSerialization JSONObjectWithData:[messageText dataUsingEncoding:NSUTF8StringEncoding]
+//                                                             options:0 error:nil];
+//                if (nil == jsonObj)
+//                    continue;
                 
                 CocoaGoPushMessage *message = [CocoaGoPushMessage messageFromDictionary:jsonObj];
                 if (nil != message) {
@@ -603,7 +603,7 @@ void CocoaGoPushLog(NSString *format, ...) {
                            self.host, (unsigned long)self.port, protocol,
                            [self queryStringWithDictionary:parameters]];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]
-                                             cachePolicy:0
+                                             cachePolicy:NSURLRequestReloadIgnoringCacheData
                                          timeoutInterval:self.timeout];
 
     NSHTTPURLResponse *response = nil;
