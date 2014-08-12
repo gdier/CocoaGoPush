@@ -268,6 +268,7 @@ void CocoaGoPushLog(NSString *format, ...) {
         self.state = CocoaGoPushStateOffline;
         self.timeout = CocoaGoPushDefaultNetworkTimeout;
         self.cometUnreadedResponseData = [NSMutableData data];
+        self.cachedMessageMap = [NSMutableDictionary dictionary];
         CocoaGoPushLog(@"init %p", self);
     }
     return self;
@@ -430,13 +431,8 @@ void CocoaGoPushLog(NSString *format, ...) {
                 
                 CocoaGoPushMessage *message = [CocoaGoPushMessage messageFromDictionary:jsonObj];
                 if (nil != message) {
-//                    if (maxMid < message.mid)
-//                        maxMid = message.mid;
                     
                     message.gid = gid;
-                    
-                    if (nil == self.cachedMessageMap)
-                        self.cachedMessageMap = [NSMutableDictionary dictionary];
                     
                     NSMutableDictionary *gidMap = self.cachedMessageMap[gidObject];
                     
@@ -449,7 +445,6 @@ void CocoaGoPushLog(NSString *format, ...) {
                 }
             }
             
-//            self.lastMidMap[gidObject] = @(maxMid);
         }];
     }
     @catch (NSException *exception) {
@@ -458,15 +453,19 @@ void CocoaGoPushLog(NSString *format, ...) {
     [self changeState:CocoaGoPushStateReady];
     
     [self.cachedMessageMap enumerateKeysAndObjectsUsingBlock:^(id gidObject, NSDictionary *messages, BOOL *stop) {
-        uint64_t maxMid;
-        maxMid = [self.lastMidMap[gidObject] longLongValue];
-
+        uint64_t maxMid = [self.lastMidMap[gidObject] longLongValue];
+        __block uint64_t newMid = maxMid;
         [messages enumerateKeysAndObjectsUsingBlock:^(id midObject, CocoaGoPushMessage *message, BOOL *stop) {
             if (maxMid < message.mid && [self.delegate respondsToSelector:@selector(cocoaGoPush:received:offlineMessage:)]) {
                 [self.delegate cocoaGoPush:self received:message offlineMessage:YES];
+                newMid = MAX(newMid, message.mid);
             }
         }];
+        
+        self.lastMidMap[gidObject] = @(newMid);
     }];
+    
+    [self.cachedMessageMap removeAllObjects];
 }
 
 - (void)connectCometWithHost:(NSString *)host port:(NSInteger)port key:(NSString *)key {
@@ -813,9 +812,6 @@ void CocoaGoPushLog(NSString *format, ...) {
                         CocoaGoPushMessage *message = [CocoaGoPushMessage messageFromDictionary:msgDictionary];
                         if (nil != message) {
                             if (self.state != CocoaGoPushStateReady) {
-                                if (nil == self.cachedMessageMap)
-                                    self.cachedMessageMap = [NSMutableDictionary dictionary];
-                                
                                 NSMutableDictionary *gidMap = self.cachedMessageMap[@(message.gid)];
                                 if (nil == gidMap) {
                                     gidMap = [NSMutableDictionary dictionary];
