@@ -152,8 +152,7 @@ NSString * const kGoPushErrorCustomMessageKey   = @"customMessage";
     return self;
 }
 
-- (id)cgp_dealloc {
-    return self;
+- (void)cgp_dealloc {
 }
 
 @end
@@ -268,7 +267,7 @@ void CocoaGoPushLog(NSString *format, ...) {
     if (self) {
         self.state = CocoaGoPushStateOffline;
         self.timeout = CocoaGoPushDefaultNetworkTimeout;
-        
+        self.cometUnreadedResponseData = [NSMutableData data];
         CocoaGoPushLog(@"init %p", self);
     }
     return self;
@@ -722,13 +721,13 @@ void CocoaGoPushLog(NSString *format, ...) {
         
         NSString *responseString = nil;
         
-        if (0 == responseStart && nil != self.cometUnreadedResponseData) {
+        if (self.cometUnreadedResponseData.length > 0) {
             [self.cometUnreadedResponseData appendBytes:dataBytes length:i];
             
             responseString = [[[NSString alloc] initWithData:self.cometUnreadedResponseData
                                                     encoding:NSUTF8StringEncoding] cgp_autorelease];
             
-            self.cometUnreadedResponseData = nil;
+            self.cometUnreadedResponseData = [NSMutableData data];
         } else {
             responseString = [[[NSString alloc] initWithBytes:(dataBytes + responseStart)
                                                        length:(i - responseStart)
@@ -743,10 +742,8 @@ void CocoaGoPushLog(NSString *format, ...) {
         responseStart = i;
     }
     
-    if (responseStart <= dataSize - 1) {
-        self.cometUnreadedResponseData = [NSMutableData dataWithBytes:(dataBytes + responseStart) length:(dataSize - responseStart)];
-    } else {
-        self.cometUnreadedResponseData = nil;
+    if (responseStart < dataSize) {
+        [self.cometUnreadedResponseData appendBytes:(dataBytes + responseStart) length:(dataSize - responseStart)];
     }
     
     [self parseResponseList:responseList];
