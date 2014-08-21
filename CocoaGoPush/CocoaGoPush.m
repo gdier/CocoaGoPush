@@ -152,8 +152,7 @@ NSString * const kGoPushErrorCustomMessageKey   = @"customMessage";
     return self;
 }
 
-- (id)cgp_dealloc {
-    return self;
+- (void)cgp_dealloc {
 }
 
 @end
@@ -268,7 +267,8 @@ void CocoaGoPushLog(NSString *format, ...) {
     if (self) {
         self.state = CocoaGoPushStateOffline;
         self.timeout = CocoaGoPushDefaultNetworkTimeout;
-        
+        self.cometUnreadedResponseData = [NSMutableData data];
+        self.cachedMessageMap = [NSMutableDictionary dictionary];
         CocoaGoPushLog(@"init %p", self);
     }
     return self;
@@ -431,13 +431,8 @@ void CocoaGoPushLog(NSString *format, ...) {
                 
                 CocoaGoPushMessage *message = [CocoaGoPushMessage messageFromDictionary:jsonObj];
                 if (nil != message) {
-//                    if (maxMid < message.mid)
-//                        maxMid = message.mid;
                     
                     message.gid = gid;
-                    
-                    if (nil == self.cachedMessageMap)
-                        self.cachedMessageMap = [NSMutableDictionary dictionary];
                     
                     NSMutableDictionary *gidMap = self.cachedMessageMap[gidObject];
                     
@@ -450,7 +445,6 @@ void CocoaGoPushLog(NSString *format, ...) {
                 }
             }
             
-//            self.lastMidMap[gidObject] = @(maxMid);
         }];
     }
     @catch (NSException *exception) {
@@ -459,15 +453,19 @@ void CocoaGoPushLog(NSString *format, ...) {
     [self changeState:CocoaGoPushStateReady];
     
     [self.cachedMessageMap enumerateKeysAndObjectsUsingBlock:^(id gidObject, NSDictionary *messages, BOOL *stop) {
-        uint64_t maxMid;
-        maxMid = [self.lastMidMap[gidObject] longLongValue];
-
+        uint64_t maxMid = [self.lastMidMap[gidObject] longLongValue];
+        __block uint64_t newMid = maxMid;
         [messages enumerateKeysAndObjectsUsingBlock:^(id midObject, CocoaGoPushMessage *message, BOOL *stop) {
             if (maxMid < message.mid && [self.delegate respondsToSelector:@selector(cocoaGoPush:received:offlineMessage:)]) {
                 [self.delegate cocoaGoPush:self received:message offlineMessage:YES];
+                newMid = MAX(newMid, message.mid);
             }
         }];
+        
+        self.lastMidMap[gidObject] = @(newMid);
     }];
+    
+    [self.cachedMessageMap removeAllObjects];
 }
 
 - (void)connectCometWithHost:(NSString *)host port:(NSInteger)port key:(NSString *)key {
@@ -722,13 +720,13 @@ void CocoaGoPushLog(NSString *format, ...) {
         
         NSString *responseString = nil;
         
-        if (0 == responseStart && nil != self.cometUnreadedResponseData) {
+        if (self.cometUnreadedResponseData.length > 0) {
             [self.cometUnreadedResponseData appendBytes:dataBytes length:i];
             
             responseString = [[[NSString alloc] initWithData:self.cometUnreadedResponseData
                                                     encoding:NSUTF8StringEncoding] cgp_autorelease];
             
-            self.cometUnreadedResponseData = nil;
+            self.cometUnreadedResponseData = [NSMutableData data];
         } else {
             responseString = [[[NSString alloc] initWithBytes:(dataBytes + responseStart)
                                                        length:(i - responseStart)
@@ -743,10 +741,8 @@ void CocoaGoPushLog(NSString *format, ...) {
         responseStart = i;
     }
     
-    if (responseStart <= dataSize - 1) {
-        self.cometUnreadedResponseData = [NSMutableData dataWithBytes:(dataBytes + responseStart) length:(dataSize - responseStart)];
-    } else {
-        self.cometUnreadedResponseData = nil;
+    if (responseStart < dataSize) {
+        [self.cometUnreadedResponseData appendBytes:(dataBytes + responseStart) length:(dataSize - responseStart)];
     }
     
     [self parseResponseList:responseList];
@@ -816,9 +812,6 @@ void CocoaGoPushLog(NSString *format, ...) {
                         CocoaGoPushMessage *message = [CocoaGoPushMessage messageFromDictionary:msgDictionary];
                         if (nil != message) {
                             if (self.state != CocoaGoPushStateReady) {
-                                if (nil == self.cachedMessageMap)
-                                    self.cachedMessageMap = [NSMutableDictionary dictionary];
-                                
                                 NSMutableDictionary *gidMap = self.cachedMessageMap[@(message.gid)];
                                 if (nil == gidMap) {
                                     gidMap = [NSMutableDictionary dictionary];
